@@ -23,8 +23,6 @@ import random
 import copy
 import warnings
 import matplotlib.pyplot as plt
-from sklearn.linear_model import LinearRegression
-from sklearn.ensemble import RandomForestRegressor
 
 warnings.filterwarnings("ignore", category=UserWarning, module='torch.nn.modules.container')
 warnings.filterwarnings("ignore", message="The input matches the zero point of the quantized input.")
@@ -52,48 +50,6 @@ print(f"Total data points: {len(df)}")
 print(f"Training data points: {len(X_train)}")
 print(f"Validation data points: {len(X_val)}")
 print(f"Test data points: {len(X_test)}")
-
-
-##### ML models RF and LR
-
-# input_scaler = MinMaxScaler()
-# output_scaler = MinMaxScaler()
-#
-# # Fit scalers on training data and transform
-# X_train_scaled = input_scaler.fit_transform(X_train)
-# y_train_scaled = output_scaler.fit_transform(y_train)
-#
-# # Transform validation data using the *fitted* scalers
-# X_test_scaled = input_scaler.transform(X_test)
-# y_test_scaled = output_scaler.transform(y_test)
-#
-# # RF model
-# rf_model = RandomForestRegressor(random_state=42)
-#
-# rf_model.fit(X_train_scaled, y_train_scaled)
-# y_pred_rf = rf_model.predict(X_test_scaled)
-#
-# test_pred_original_scale_rf = output_scaler.inverse_transform(y_pred_rf)
-#
-# r2_rf_out_1 = r2_score(y_test[:, 0], test_pred_original_scale_rf[:, 0])
-# mse_rf_out_1 = mean_squared_error(y_test[:, 0], test_pred_original_scale_rf[:, 0])
-#
-# r2_rf_out_2 = r2_score(y_test[:, 1], test_pred_original_scale_rf[:, 1])
-# mse_rf_out_2 = mean_squared_error(y_test[:, 1], test_pred_original_scale_rf[:, 1])
-#
-# # LR model
-# lr_model = LinearRegression()
-# lr_model.fit(X_train_scaled, y_train_scaled)
-# y_pred_lr = lr_model.predict(X_test_scaled)
-#
-# test_pred_original_scale_lr = output_scaler.inverse_transform(y_pred_lr)
-#
-# r2_lr_out_1 = r2_score(y_test[:, 0], test_pred_original_scale_lr[:, 0])
-# mse_lr_out_1 = mean_squared_error(y_test[:, 0], test_pred_original_scale_lr[:, 0])
-#
-# r2_lr_out_2 = r2_score(y_test[:, 1], test_pred_original_scale_lr[:, 1])
-# mse_lr_out_2 = mean_squared_error(y_test[:, 1], test_pred_original_scale_lr[:, 1])
-
 
 # Define the One-Hidden-Layer MLP Model in PyTorch
 class OneHiddenLayerMLP(nn.Module):
